@@ -1,0 +1,47 @@
+{% extends "main/base.html" %}
+
+{% block title %}View List{% endblock %}
+
+{% block content %}
+    <h1>{{ls.name}}</h1>
+    <br>
+    <form method="post" action="#">
+        {% csrf_token %}
+
+        {% for item in ls.item_set.all %}
+        <div class="input-group mb-3">
+                <span class="input-group-text">
+                    <!--
+                        <input type="image" name="d{{item.id}}" value="deleted" src="https://cdn4.iconfinder.com/data/icons/controls-add-on-flat/48/Contols_-_Add_On-35-512.png" style= height="20" width="20"/>
+                     -->
+                    <button type="submit" name="d{{item.id}}" value="deleted" style = "border: none ; outline:none">
+                        <img src = "https://cdn4.iconfinder.com/data/icons/controls-add-on-flat/48/Contols_-_Add_On-35-512.png" height="19" width="19" />
+                    </button>
+
+                </span>
+                <span class="input-group-text" style="height:40px">
+                    {% if item.complete == False %}
+                        <input type="checkbox", value="clicked", name="c{{item.id}}">
+                    {% else %}
+                        <input type="checkbox", value="clicked", name="c{{item.id}}" checked>
+                    {% endif %}
+                </span>
+            <input type="text" name= "item-text{{item.id}}" value="{{item.text}}" class="form-control" >
+        </div>
+        {% endfor %}
+
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="submit" name="newItem" value="newItem" class="btn btn-success" style="background-color: #75C9BA !important" >Add Item</button>
+            </div>
+            <input type="text", name="new">
+
+        </div>
+
+        <button type="submit" name="save" value="save" class="btn btn-success" style="background-color: #75C9BA !important" >Save</button>
+        <Button type="submit" name = "deletelist{{ls.id}}" value="deletelist" class="btn btn-success" style="background-color: #d85f56 !important">Delete List</Button>
+
+    </form>
+
+{% endblock %}

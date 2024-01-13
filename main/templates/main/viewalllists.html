@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+
+{% block title %} To-Do Lists {% endblock %}
+
+{% block content %}
+
+<head>
+<style>
+.linkdesign:link, .linkdesign:visited {
+    border-radius: 25px;
+    height: 50px;
+    font-family: "Georgia", Times, serif;
+    width: 200px;
+    background-color: #353535;
+    color: white;
+    padding: 50px 30px;
+    text-align: center;
+    line-height: 0px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 10px 10px;
+
+}
+
+.linkdesign:hover {
+    background-color: #75C9BA;
+}
+</style>
+</head>
+
+<br>
+<h3 align="center">To-Do Lists</h3>
+<div class="hralign" style="padding: 0px 100px 0px 0px "><hr style="height:3px; width:700px"/></div>
+
+<br>
+<div class="displayalllists" align="center" >
+    {% for item in tobj %}
+        <a class="linkdesign" href="/list{{item.id}}/">{{item.name}}</a>
+    {% endfor %}
+
+</div>
+{% endblock %}

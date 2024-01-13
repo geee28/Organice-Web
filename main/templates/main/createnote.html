@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Create New Note {% endblock %}
+
+{% block content %}
+<br>
+<h3 align="center">Create a new Note</h3>
+<div class="hralign" style="padding: 0px 100px 0px 0px "><hr style="height:3px; width:700px"/></div>
+<br>
+<form method="post" action="/createnote/" class="form-group">
+    {% csrf_token %}
+    <div class="input-group mb-3" style="padding: 0px 100px 0px 250px !important">
+        {{form.notetitle}}
+    </div>
+    <div class="input-group mb-3" style="padding: 0px 120px 50px 295px !important">
+        <button type="submit" name="save" class="btn btn-success" style="background-color: #75C9BA !important" >Create Note</button>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Notes {% endblock %}
+
+{% block content %}
+
+<head>
+<style>
+.linkdesign:link, .linkdesign:visited {
+    border-radius: 25px;
+    height: 50px;
+    font-family: "Georgia", Times, serif;
+    width: 200px;
+    background-color: #353535;
+    color: white;
+    padding: 50px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 10px 10px;
+    line-height: 0px;
+}
+
+.linkdesign:hover {
+    background-color: #75C9BA;
+}
+</style>
+</head>
+
+<br>
+<h3 align="center">Notes</h3>
+<div class="hralign" style="padding: 0px 100px 0px 0px "><hr style="height:3px; width:700px"/></div>
+
+<br>
+<div class="displayallnotes" align="center">
+    {% for item in nobj %}
+        <a class="linkdesign" href="/note{{item.id}}/">{{item.notetitle}}</a>
+    {% endfor %}
+
+</div>
+{% endblock %}
